@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    .box{
+        width: 200px;
+        height: 200px;
+        border-style: solid;
+        display: inline-block;
+        padding: 5px;
+        margin-left: 60px;
+        vertical-align: top;     
+    }
+
+    .subbutton{
+        background-color: aqua;
+        border-radius: 5px;
+        border-style: solid;
+        padding: 10px;
+        margin-left: 60px;
+        margin-top: 50px;
+    }
+
+    #makeborder{
+        border-style: solid;
+        padding-right: 50px;
+        padding-left: 5px;
+    }
+
+    h2{
+        margin-left: 70px;
+    }
+
+    h3{
+        font-size: 15px;
+        margin-left: 15px;
+    }
+
+    
+    </style>
+</head>
+<body>
+
+    <h3>Your Gold: <span id="makeborder">{{ totalgold }}</span></h3>
+
+    <div class="box">
+        <h2>Farm</h2>
+        <h3>(earns 10-20 golds)</h3>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="farm" />
+        <input type="submit" value="Find Gold!" class="subbutton" />
+        </form>
+    </div>
+    <div class="box">
+        <h2>Cave</h2>
+        <h3>(earns 5-10 golds)</h3>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="cave" />
+        <input type="submit" value="Find Gold!" class="subbutton" />
+        </form>
+    </div>
+    <div class="box">
+        <h2>House</h2>
+        <h3>(earns 2-5 golds)</h3>
+        <form action="/process_money" method="post">
+            {% csrf_token %}
+        <input type="hidden" name="building" value="house" />
+        <input type="submit" value="Find Gold!" class="subbutton" />
+        </form>
+    </div>
+    <div class="box">
+        <h2>Casino</h2>
+        <h3>(earns/takes 0-50 golds)</h3>
+        <form action="/process_money" method="post">
+        <input type="hidden" name="building" value="casino" />
+        <input type="submit" value="Find Gold!" class="subbutton" />
+        </form>
+    </div>
+
+    <h4>Activites</h4>
+    <p>Earned {{ message|safe }} golds from the {{ build }}</p>
+
+          
+    
+</body>
+</html>
